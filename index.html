@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منشئ عقد إيجار شقة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <h1>منشئ عقد إيجار شقة</h1>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="btn btn-ghost" id="btn-reset" title="مسح الحقول">مسح</button>
+        <button type="button" class="btn btn-primary" id="btn-print">طباعة / حفظ PDF</button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel editor" aria-label="محرر العقد">
+        <form id="lease-form" class="form-stack">
+          <fieldset class="card">
+            <legend>ترويسة العقد</legend>
+            <div class="field-row field-row-3">
+              <label class="field">
+                <span>اليوم</span>
+                <input type="text" name="contractDay" placeholder="الأحد" />
+              </label>
+              <label class="field">
+                <span>التاريخ (هجري)</span>
+                <input type="text" name="hijriDate" placeholder="١ / ١ / ١٤٤٦" />
+              </label>
+              <label class="field">
+                <span>المدينة</span>
+                <input type="text" name="city" placeholder="مكة المكرمة" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>الطرف الأول (المؤجر)</legend>
+            <div class="field-row">
+              <label class="field">
+                <span>الاسم</span>
+                <input type="text" name="lessorName" placeholder="اسم المؤجر" autocomplete="name" />
+              </label>
+              <label class="field">
+                <span>الجنسية</span>
+                <input type="text" name="lessorNationality" placeholder="سعودي" />
+              </label>
+            </div>
+            <label class="field field-full">
+              <span>رقم الهوية / الإقامة</span>
+              <input type="text" name="lessorId" placeholder="١٠xxxxxxxx" inputmode="numeric" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>الطرف الثاني (المستأجر)</legend>
+            <div class="field-row">
+              <label class="field">
+                <span>الاسم</span>
+                <input type="text" name="tenantName" placeholder="اسم المستأجر" />
+              </label>
+              <label class="field">
+                <span>الجنسية</span>
+                <input type="text" name="tenantNationality" placeholder="—" />
+              </label>
+            </div>
+            <label class="field field-full">
+              <span>رقم الهوية / الإقامة</span>
+              <input type="text" name="tenantId" placeholder="١٠xxxxxxxx" inputmode="numeric" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>العين المؤجرة</legend>
+            <div class="field-row">
+              <label class="field">
+                <span>رقم الشقة</span>
+                <input type="text" name="aptNumber" placeholder="مثال: ٤٠٢" />
+              </label>
+              <label class="field">
+                <span>المبنى / الحي</span>
+                <input type="text" name="buildingName" placeholder="اسم العمارة أو الحي" />
+              </label>
+            </div>
+            <label class="field field-full">
+              <span>الموقع التفصيلي (مكة أو غيرها)</span>
+              <input type="text" name="propertyLocation" placeholder="مكة المكرمة — …" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>مدة العقد والأجرة</legend>
+            <div class="field-row">
+              <label class="field">
+                <span>مدة الإيجار (نصاً)</span>
+                <input type="text" name="leaseDuration" placeholder="سنة هجرية واحدة" />
+              </label>
+              <label class="field">
+                <span>بداية العقد</span>
+                <input type="text" name="leaseStart" placeholder="١ / ١ / ١٤٤٦" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>نهاية العقد</span>
+                <input type="text" name="leaseEnd" placeholder="٣٠ / ١٢ / ١٤٤٦" />
+              </label>
+              <label class="field">
+                <span>الأجرة السنوية (ريال)</span>
+                <input type="text" name="rentAmount" placeholder="٢٤٠٠٠" inputmode="decimal" />
+              </label>
+            </div>
+            <label class="field field-full">
+              <span>جدولة الدفع</span>
+              <input type="text" name="rentSchedule" placeholder="تُدفع كل ستة أشهر مقدماً" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>التوقيعات (للمعاينة)</legend>
+            <div class="field-row">
+              <label class="field">
+                <span>اسم المؤجر للتوقيع</span>
+                <input type="text" name="lessorSignName" placeholder="كما ورد أعلاه" />
+              </label>
+              <label class="field">
+                <span>اسم المستأجر للتوقيع</span>
+                <input type="text" name="tenantSignName" placeholder="كما ورد أعلاه" />
+              </label>
+            </div>
+          </fieldset>
+
+          
+        </form>
+      </section>
+
+      <section class="panel preview-wrap" aria-label="معاينة العقد">
+        <div class="preview-toolbar">
+          <span class="preview-label">معاينة مباشرة</span>
+        </div>
+        <div class="preview-scroll">
+          <article class="contract-sheet" id="contract-preview"></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

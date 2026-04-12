@@ -1,0 +1,402 @@
+:root {
+  --bg: #0f1218;
+  --bg-elevated: #161b24;
+  --surface: #1c222d;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8eaef;
+  --text-muted: #8b92a5;
+  --accent: #5eead4;
+  --accent-dim: rgba(94, 234, 212, 0.15);
+  --danger: #f87171;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  --font-ar: "Tajawal", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-ar);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(94, 234, 212, 0.1), transparent),
+    radial-gradient(ellipse 60% 40% at 0% 50%, rgba(99, 102, 241, 0.07), transparent);
+}
+
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 2rem;
+}
+
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-mark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.top-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0d12;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(340px, 1.1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.editor {
+  padding: 1.25rem;
+  max-height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.card legend {
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.field-row-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 640px) {
+  .field-row,
+  .field-row-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-full {
+  margin-top: 0.75rem;
+}
+
+.field > span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.field input,
+.field textarea {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  width: 100%;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(94, 234, 212, 0.45);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.form-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.form-hint code {
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.preview-wrap {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 5.5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 960px) {
+  .preview-wrap {
+    position: relative;
+    top: 0;
+    max-height: none;
+  }
+
+  .editor {
+    max-height: none;
+  }
+}
+
+.preview-toolbar {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.preview-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.preview-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 1.25rem;
+}
+
+/* صفحة العقد — معاينة وطباعة */
+.contract-sheet {
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 16mm 18mm;
+  background: #fff;
+  color: #1a1d24;
+  font-size: 11pt;
+  line-height: 1.75;
+  text-align: justify;
+  box-shadow: var(--shadow);
+  border-radius: 2px;
+  direction: rtl;
+}
+
+.contract-sheet .ct-title {
+  margin: 0 0 0.6em;
+  font-size: 20pt;
+  font-weight: 700;
+  text-align: center;
+  color: #0f1218;
+}
+
+.contract-sheet .ct-preamble {
+  margin: 0 0 1em;
+  text-indent: 0;
+}
+
+.contract-sheet .ct-parties p {
+  margin: 0 0 0.55em;
+}
+
+.contract-sheet .ct-agree {
+  margin-top: 0.75em !important;
+}
+
+.contract-sheet .ph {
+  color: #9ca3af;
+  border-bottom: 1px dotted #cbd5e1;
+  padding: 0 0.15em;
+}
+
+.contract-sheet .ct-clauses {
+  margin: 1em 0 0;
+  padding: 0 1.25em 0 0;
+  list-style-type: arabic-indic;
+}
+
+.contract-sheet .ct-clauses li {
+  margin-bottom: 0.55em;
+}
+
+.contract-sheet .ct-closing {
+  margin: 1.25em 0 1.5em;
+  text-align: center;
+  font-weight: 500;
+}
+
+.contract-sheet .ct-signatures {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+}
+
+.contract-sheet .ct-sign-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.contract-sheet .ct-sign-role {
+  margin: 0 0 0.35em;
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+.contract-sheet .ct-sign-name,
+.contract-sheet .ct-sign-line {
+  margin: 0.25em 0;
+  font-size: 10pt;
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    background-image: none;
+  }
+
+  .app {
+    padding: 0;
+    max-width: none;
+  }
+
+  .top-bar,
+  .editor,
+  .preview-toolbar {
+    display: none !important;
+  }
+
+  .preview-wrap {
+    max-height: none;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .preview-scroll {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .main-grid {
+    display: block;
+  }
+
+  .contract-sheet {
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    min-height: auto;
+    padding: 12mm 14mm;
+    font-size: 10.5pt;
+  }
+}
